@@ -1,5 +1,5 @@
 sudo: required
-dis: bionic
+dist: bionic
 language: java
 jdk:
   - oraclejdk11
@@ -14,7 +14,7 @@ before_install:
   - cd ..
   - echo "We are in the Docker folder!!!"
 script:
-  - echo "Ok Here we GO!"
+  - echo "OK Here we GO!"
   - docker-compose build
 before_deploy:
   - echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
@@ -25,15 +25,15 @@ deploy:
     docker push bezeyur/rest-with-spring-boot-udemy:$TRAVIS_JOB_ID
   on:
     branch: master
-after_sucess:
+after_success:
   - sudo apt-get -y install python3-pip python-dev
   - sudo pip3 install -U setuptools
   - sudo pip3 install -U virtualenvwrapper
   - python3 -V
   - pip3 -V
-  - pip3 uninstall whell
-  - pip3 install whell
-  - pip3 install aws cli --upgrade --user
+  - pip3 uninstall wheel
+  - pip3 install wheel
+  - pip3 install awscli --upgrade --user
   - export PATH=$PATH:$HOME/.local/bin
   - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 656439117510.dkr.ecr.us-east-1.amazonaws.com
   - docker tag rest-with-spring-boot-udemy:latest $IMAGE_REPO_URL:$TRAVIS_JOB_ID
