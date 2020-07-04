@@ -9,9 +9,10 @@ services: docker
 before_install:
   - sudo apt-get update
   - cd 19\ RestWithSpringBootUdemy\ CI\ na\ AWS\ com\ o\ Travis\ CI/RestWithSpringBootUdemy/
+  - echo "Let's start Maven Package!"
   - mvn clean package
   - cd ..
-  - echo "We are in the Docker Folder!"
+  - echo "We are in the Docker folder!!!"
 script:
   - echo "Ok Here we GO!"
   - docker-compose build
